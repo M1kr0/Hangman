@@ -7,6 +7,7 @@
 
 #include "spielrunde.h"
 #include "woerterliste.h"
+#include "statistiken.h"
 
 int main(int argc, char **argv)
 {
@@ -26,7 +27,7 @@ int main(int argc, char **argv)
     cout << "Ihre Auswahl: ";
     cin >> wahl;
 
-    switch (whal)
+    switch (wahl)
     {
     case 0:
         /* code */
