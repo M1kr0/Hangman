@@ -12,7 +12,9 @@
 int main(int argc, char **argv)
 {
     string playerName;
-    int wahl = 0;
+    int wahl = 42;
+    int eingabe = 42;
+    Spielrunde game = Spielrunde();
 
     cout << "Bitte geben Sie eine Spielernamen an: ";
     cin >> playerName;
@@ -31,10 +33,15 @@ int main(int argc, char **argv)
     {
     case 0:
         /* code */
+        game.~Spielrunde();
+        cout << "Vielen dank für das SPielen und einen schönen Tag noch." << endl;
         break;
 
     case 1:
-        /* code */
+        /***
+         * Hier wird das eigentliche Game gespielt
+         **/
+
         break;
 
     case 2:

@@ -1,8 +1,9 @@
 #pragma once
 
 #include "header.h"
+#include "dateiarbeit.h"
 
-class Statistiken
+class Statistiken : public Dateiarbeit
 {
 private:
     /* data */

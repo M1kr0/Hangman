@@ -5,8 +5,9 @@
 #pragma once
 
 #include "header.h"
+#include "dateiarbeit.h"
 
-class Woerterliste
+class Woerterliste : public Dateiarbeit
 {
 private:
     /* data */
