@@ -12,11 +12,15 @@ class Woerterliste : public Dateiarbeit
 private:
     /* data */
 public:
-    Woerterliste(/* args */);
+    Woerterliste();
+    Woerterliste(string _dateiName);
     ~Woerterliste();
 };
+Woerterliste::Woerterliste()
+{
+}
 
-Woerterliste::Woerterliste(/* args */)
+Woerterliste::Woerterliste(string _dateiName)
 {
 }
 
