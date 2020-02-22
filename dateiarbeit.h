@@ -5,67 +5,78 @@
 class Dateiarbeit
 {
 private:
-    /* data */
-    vector<string> woerter;
-    vector<int> woerterGenutzt;
-    string dateiName;
+  /* data */
+  vector<string> m_woerter;
+  vector<int> m_woerterGenutzt;
+  string m_dateiName;
 
 public:
-    Dateiarbeit();
-    Dateiarbeit(string _dateiName);
-    ~Dateiarbeit();
+  Dateiarbeit();
+  Dateiarbeit(string _dateiName);
+  ~Dateiarbeit();
 
-    void dateiLaden(string _dateiName);
-    void dateiSpeichern(string _dateiName);
+  void dateiLaden();
+  void dateiSpeichern();
 };
 Dateiarbeit::Dateiarbeit()
 {
+#if DEBUG
+  cout << "Dateiarbeit default constructor called." << endl;
+#endif
 }
 
 Dateiarbeit::Dateiarbeit(string _dateiName)
 {
-    // Datei Pointer
-    fstream fin;
-    string line, word, tempWort;
-    int tempZahl;
-    // Die Datei öffnen
-    fin.open(_dateiName);
+#if DEBUG
+  cout << "Dateiarbeit overloaded constructor called." << endl;
+#endif
+  fstream fin;
+  string line, word, tempWort;
+  int tempZahl;
 
-    if (fin.is_open())
+  m_dateiName = _dateiName;
+  // Die Datei öffnen
+  fin.open(_dateiName);
+
+  if (fin.is_open())
+  {
+    m_woerter.clear();
+
+    while (getline(fin, line))
     {
-        woerter.clear();
+      stringstream lineStream(line);
+      getline(lineStream, tempWort, ' ');
+      lineStream >> tempZahl;
 
-        while (getline(fin, line))
-        {
-            stringstream lineStream(line);
-            getline(lineStream, tempWort, ' ');
-            lineStream >> tempZahl;
-
-            woerter.push_back(tempWort);
-            woerterGenutzt.push_back(tempZahl);
-        }
+      m_woerter.push_back(tempWort);
+      m_woerterGenutzt.push_back(tempZahl);
     }
-    else
-    {
-        cout << "Datei konnte nicht geöffnet werde." << endl;
-    }
+  }
+  else
+  {
+    cout << "Datei konnte nicht geöffnet werde." << endl;
+  }
 
-    for (int i = 0; i < woerter.size(); ++i)
-    {
-        cout << woerter.at(i) << ", " << woerterGenutzt.at(i) << endl;
-    }
+  for (int i = 0; i < m_woerter.size(); ++i)
+  {
+    cout << m_woerter.at(i) << ", " << m_woerterGenutzt.at(i) << endl;
+  }
 
-    fin.close();
+  fin.close();
 }
 
 Dateiarbeit::~Dateiarbeit()
 {
+#if DEBUG
+  cout << "Dateiarbeit destructor called." << endl;
+#endif
+  // Abspeichern der aktuellen Wörterliste mit den neuen Zählern in der Datei
 }
 
-void Dateiarbeit::dateiLaden(string _dateiName)
+void Dateiarbeit::dateiLaden()
 {
 }
 
-void Dateiarbeit::dateiSpeichern(string _dateiName)
+void Dateiarbeit::dateiSpeichern()
 {
 }

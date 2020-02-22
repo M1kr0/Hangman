@@ -10,20 +10,30 @@
 class Woerterliste : public Dateiarbeit
 {
 private:
-    /* data */
+  string m_dateiName;
+
 public:
-    Woerterliste();
-    Woerterliste(string _dateiName);
-    ~Woerterliste();
+  Woerterliste();
+  Woerterliste(string);
+  ~Woerterliste();
 };
 Woerterliste::Woerterliste()
 {
+#if DEBUG
+  cout << "Wörterliste default constructor called." << endl;
+#endif
 }
 
-Woerterliste::Woerterliste(string _dateiName)
+Woerterliste::Woerterliste(string _dateiName) : Dateiarbeit{_dateiName}
 {
+#if DEBUG
+  cout << "Wörterliste overloaded constructor called." << endl;
+#endif
 }
 
 Woerterliste::~Woerterliste()
 {
+#if DEBUG
+  cout << "Wörterliste destructor called." << endl;
+#endif
 }
