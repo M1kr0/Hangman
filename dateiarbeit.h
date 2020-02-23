@@ -4,7 +4,7 @@
 
 class Dateiarbeit
 {
-private:
+protected:
   /* data */
   vector<string> m_woerter;
   vector<int> m_woerterGenutzt;
@@ -15,9 +15,10 @@ public:
   Dateiarbeit(string _dateiName);
   ~Dateiarbeit();
 
-  void dateiLaden();
-  void dateiSpeichern();
+  vector<string> getWoerter();
+  vector<int> getWoerterGenutzt();
 };
+
 Dateiarbeit::Dateiarbeit()
 {
 #if DEBUG
@@ -55,6 +56,7 @@ Dateiarbeit::Dateiarbeit(string _dateiName)
   else
   {
     cout << "Datei konnte nicht geöffnet werde." << endl;
+    cout << "Überprüfen Sie den Dateinamen und starten Sie erneut." << endl;
   }
 
   for (int i = 0; i < m_woerter.size(); ++i)
@@ -71,12 +73,30 @@ Dateiarbeit::~Dateiarbeit()
   cout << "Dateiarbeit destructor called." << endl;
 #endif
   // Abspeichern der aktuellen Wörterliste mit den neuen Zählern in der Datei
+  ofstream file(m_dateiName);
+  vector<int>::iterator ptr;
+  string tempLine;
+
+  if (!file)
+  {
+    cout << m_dateiName << " konnte nicht zum schreiben geöffnet werden." << endl;
+  }
+  else
+  {
+    for (int i = 0; i < m_woerter.size(); i++)
+    {
+      file << m_woerter.at(i) << "," << m_woerterGenutzt.at(i) << endl;
+    }
+  }
+
+  file.close();
 }
 
-void Dateiarbeit::dateiLaden()
+vector<string> Dateiarbeit::getWoerter()
 {
+  return m_woerter;
 }
-
-void Dateiarbeit::dateiSpeichern()
+vector<int> Dateiarbeit::getWoerterGenutzt()
 {
+  return m_woerterGenutzt;
 }

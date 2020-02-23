@@ -1,6 +1,6 @@
-Appfelmus 0
-Buttermilch 0
-Programmieren 0
-Kompressor 0
-Notizbuch 0
-Weihnachtsbaum 0
+Appfelmus,0
+Buttermilch,0
+Programmieren,0
+Kompressor,0
+Notizbuch,0
+Weihnachtsbaum,0
