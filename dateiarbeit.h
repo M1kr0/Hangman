@@ -46,7 +46,7 @@ Dateiarbeit::Dateiarbeit(string _dateiName)
     while (getline(fin, line))
     {
       stringstream lineStream(line);
-      getline(lineStream, tempWort, ' ');
+      getline(lineStream, tempWort, ',');
       lineStream >> tempZahl;
 
       m_woerter.push_back(tempWort);
@@ -73,11 +73,12 @@ Dateiarbeit::~Dateiarbeit()
   cout << "Dateiarbeit destructor called." << endl;
 #endif
   // Abspeichern der aktuellen Wörterliste mit den neuen Zählern in der Datei
-  ofstream file(m_dateiName);
-  vector<int>::iterator ptr;
+  ofstream file;
   string tempLine;
 
-  if (!file)
+  file.open(m_dateiName);
+
+  if (!file.is_open())
   {
     cout << m_dateiName << " konnte nicht zum schreiben geöffnet werden." << endl;
   }
